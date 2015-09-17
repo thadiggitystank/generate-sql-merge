@@ -1,10 +1,6 @@
 SET NOCOUNT ON
 GO
 
-PRINT 'Using Master database'
-USE master
-GO
-
 PRINT 'Checking for the existence of this procedure'
 IF (SELECT OBJECT_ID('sp_generate_merge','P')) IS NOT NULL --means, the procedure already exists
  BEGIN
@@ -653,11 +649,6 @@ END
 GO
 
 PRINT 'Created the procedure'
-GO
-
-
---Mark the proc as a system object to allow it to be called transparently from other databases
-EXEC sp_MS_marksystemobject sp_generate_merge
 GO
 
 PRINT 'Granting EXECUTE permission on sp_generate_merge to all users'
